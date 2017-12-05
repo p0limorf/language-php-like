@@ -45,9 +45,9 @@
   'do … while …':
     'prefix': 'do'
     'body': 'do {\n\t${0:# code...}\n} while (${1:$a <= 10});'
-  'echo "…"':
+  'echo \'…\'':
     'prefix': 'echo'
-    'body': 'echo "${1:string}";$0'
+    'body': 'echo \'${1:string}\';$0'
   'else …':
     'prefix': 'else'
     'body': 'else {\n\t${0:# code...}\n}'
@@ -68,10 +68,10 @@
     'body': 'function (${1:$${2:value}${3:=\'\'}}) {\n\t${0:# code...}\n}'
   'if … else …':
     'prefix': 'ifelse'
-    'body': 'if (${1:condition}) {\n\t${2:# code...}\n} else {\n\t${3:# code...}\n}\n$0'
+    'body': 'if (${1:condition})\n{\n\t${2:# code...}\n}\nelse\n{\n\t${3:# code...}\n}\n$0'
   'if …':
     'prefix': 'if'
-    'body': 'if (${1:condition}) {\n\t${0:# code...}\n}'
+    'body': 'if (${1:condition})\n{\n\t${0:# code...}\n}'
   '$… = ( … ) ? … : …':
     'prefix': 'if?'
     'body': '$${1:retVal} = (${2:condition}) ? ${3:a} : ${4:b} ;'
@@ -139,7 +139,7 @@
 '.text.html.php':
   '<?php … ?>':
     'prefix': 'php'
-    'body': '<?php $0 ?>'
+    'body': '<?php\n\n$0\n\n?>'
   '<?php echo … ?>':
     'prefix': 'echo'
     'body': '<?php echo ${1:$var} ?>$0'
